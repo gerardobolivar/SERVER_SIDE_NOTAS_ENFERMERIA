@@ -1,0 +1,3 @@
+##Tgnore the following folders on git
+node_modules/
+
