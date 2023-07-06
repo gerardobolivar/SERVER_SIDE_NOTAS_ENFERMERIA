@@ -10,12 +10,12 @@ class pacienteService {
   }
   consultarPaciente(connection, cedula) {
     return new Promise((resolve, reject) => {
-      let sql = `CALL consultarPaciente(${cedula})`;
+      let sql = `CALL consultarPaciente('${cedula}')`;
       connection.query(sql, (err, result) => {
         if (err) reject(err);
         resolve(result);
-      })
-    })
+      });
+    });
   }
   insertarPaciente(connection, paciente) {
     return new Promise((resolve, reject) => {
@@ -23,8 +23,8 @@ class pacienteService {
       connection.query(sql, (err, result) => {
         if (err) reject(err);
         resolve(result);
-      })
-    })
+      });
+    });
   }
   modificarPaciente(connection, paciente) {
     return new Promise((resolve, reject) => {
@@ -32,17 +32,17 @@ class pacienteService {
       connection.query(sql, (err, result) => {
         if (err) reject(err);
         resolve(result);
-      })
-    })
+      });
+    });
   }
   eliminarPaciente(connection, cedula) {
     return new Promise((resolve, reject) => {
-      let sql = `CALL borrarPaciente(${cedula})`;
+      let sql = `CALL borrarPaciente('${cedula}')`;
       connection.query(sql, (err, result) => {
         if (err) reject(err);
         resolve(result);
-      })
-    })
+      });
+    });
   }
 }
 

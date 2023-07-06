@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const pacienteHandler = require("../controller/pacienteHandler");
-const req = require("express/lib/request");
 
 router
   .get("/listar/:page", (req, res, next) => {

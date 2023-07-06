@@ -1,4 +1,3 @@
-const persona = require("../model/persona");
 const pacienteService = require("../services/pacienteService");
 
 class pacienteHandler {
