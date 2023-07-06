@@ -7,6 +7,7 @@ const cityRouter = require("./routes/cityRouter");
 const personaRouter = require("./routes/personaRouter");
 const pacienteRouter = require("./routes/pacienteRouter");
 const notaRouter = require("./routes/notaRouter");
+const signosVitalesRouter = require("./routes/signosVitalesRouter");
 
 
 app.use(express.json()); //This is the middleware that will handle the JSON requests
@@ -16,6 +17,7 @@ app.use("/cities", cityRouter);
 app.use("/persona", personaRouter);
 app.use("/paciente", pacienteRouter);
 app.use("/nota", notaRouter);
+app.use("/signos", signosVitalesRouter);
 
 
 
