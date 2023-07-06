@@ -3,7 +3,7 @@ const dataBaseConfig = {
   host: "localhost",
   user: "root",
   password: "root",
-  database: "world",
+  database: "notas_enfermeria",
 }
 
 module.exports = dataBaseConfig;
