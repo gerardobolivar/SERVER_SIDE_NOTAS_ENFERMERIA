@@ -2,7 +2,7 @@
 const dataBaseConfig = {
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "AsE.018!",
   database: "notas_enfermeria",
 }
 
