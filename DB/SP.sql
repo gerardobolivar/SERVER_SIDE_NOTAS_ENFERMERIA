@@ -414,7 +414,7 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS insertarNotas//
 CREATE PROCEDURE insertarNotas(
 	IN paciente_persona_cedula VARCHAR(15),
-    IN encargado_id_encargado INT,
+    IN encargado_persona_cedula VARCHAR(15),
     IN turno VARCHAR(45),
     IN nota TEXT
     )
@@ -422,7 +422,7 @@ CREATE PROCEDURE insertarNotas(
 		INSERT INTO notas VALUES(
 			0,
             paciente_persona_cedula,
-            encargado_id_encargado,
+            encargado_persona_cedula,
             turno,
             CURDATE(),
             CURTIME(),
@@ -461,7 +461,7 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS consultarNotas//
 CREATE PROCEDURE consultarNotas(cedula VARCHAR(15))
 BEGIN
-	SELECT * FROM notas WHERE notas.paciente_persona_cedula = cedula;
+	SELECT * FROM notas WHERE notas.paciente_persona_cedula = cedula AND notas.estado = 1;
 END //
 DELIMITER ;
 
@@ -470,7 +470,7 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS consultarNota//
 CREATE PROCEDURE consultarNota(cedula VARCHAR(15), idnota INT)
 BEGIN
-	SELECT * FROM notas WHERE notas.paciente_persona_cedula = cedula AND notas.idnotas;
+	SELECT * FROM notas WHERE notas.paciente_persona_cedula = cedula AND notas.idnotas AND notas.estado = 1;
 END //
 DELIMITER ;
 
@@ -480,19 +480,19 @@ DROP PROCEDURE IF EXISTS modificarNotas//
 CREATE PROCEDURE modificarNotas(
 	IN idnotas INT,
 	IN paciente_persona_cedula VARCHAR(15),
-    IN encargado_id_encargado INT,
+    IN encargado_persona_cedula VARCHAR(15),
     IN turno VARCHAR(45),
     IN nota TEXT,
     IN estado BIT
     )
 	BEGIN
 		UPDATE notas 
-        SET notas.encargado_id_encargado = encargado_id_encargado,
+        SET notas.encargado_persona_cedula = encargado_persona_cedula,
 			notas.turno = turno,
             notas.nota = nota,
 			notas.fecha_modificado = CURTIME(),
             notas.estado = estado
-		WHERE notas.paciente_persona_cedula = paciente_persona_cedula and notas.idnotas;
+		WHERE notas.paciente_persona_cedula = paciente_persona_cedula AND notas.idnotas = idnotas;
 	END//
 DELIMITER ;
 

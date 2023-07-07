@@ -125,20 +125,27 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `notas_enfermeria`.`notas` (
   `idnotas` INT NOT NULL AUTO_INCREMENT,
   `paciente_persona_cedula` VARCHAR(15) NOT NULL,
-  `encargado_id_encargado` INT NOT NULL,
+  `encargado_persona_cedula` VARCHAR(15) NOT NULL,
   `turno` VARCHAR(45) NOT NULL,
   `fecha_creado` DATE NOT NULL,
   `fecha_modificado` DATETIME NOT NULL,
   `nota` TEXT NOT NULL,
-  `estado` BIT NOT NULL,
+  `estado` BIT(1) NOT NULL,
   PRIMARY KEY (`idnotas`, `paciente_persona_cedula`),
   INDEX `fk_notas_paciente1_idx` (`paciente_persona_cedula` ASC) VISIBLE,
+  INDEX `fk_notas_encargado1_idx` (`encargado_persona_cedula` ASC) VISIBLE,
   CONSTRAINT `fk_notas_paciente1`
     FOREIGN KEY (`paciente_persona_cedula`)
-    REFERENCES `notas_enfermeria`.`paciente` (`persona_cedula`)
+    REFERENCES `notas_enfermeria`.`paciente` (`persona_cedula`),
+  CONSTRAINT `fk_notas_encargado1`
+    FOREIGN KEY (`encargado_persona_cedula`)
+    REFERENCES `notas_enfermeria`.`encargado` (`persona_cedula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb3;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
